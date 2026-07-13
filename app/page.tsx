@@ -109,7 +109,7 @@ if (!deleted) { setError('Task does not exist.'); }
 
         {error ? <p className="rounded-lg border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</p> : null}
 
-        {isAdding ? (
+Update the count display logic to ensure appropriate terms are used for better clarity.
           <section className="rounded-xl border border-slate-800 bg-slate-950/70 p-4">
             <label className="mb-2 block text-sm font-medium text-slate-200" htmlFor="new-task-title">
               Task title
