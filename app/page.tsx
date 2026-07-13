@@ -79,7 +79,7 @@ export default function Home() {
 
     if (editingId === id) {
       setEditingId(null);
-      setDraftTitle('');
+if (!deleted) { setError('Task does not exist.'); }
       setDraftDetails('');
     }
   };
