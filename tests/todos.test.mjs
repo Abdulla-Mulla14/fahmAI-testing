@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { createTodo, handleTodoCreateRequest } from '../lib/todos.mjs';
+import { createTodo, deleteTodo, handleTodoCreateRequest, updateTodo } from '../lib/todos.mjs';
 
 test('createTodo defaults new items to not completed', () => {
   const todo = createTodo('Write tests');
@@ -47,4 +47,24 @@ test('handleTodoCreateRequest rejects malformed JSON', async () => {
 
   assert.equal(response.status, 400);
   assert.equal(response.body.error, 'Malformed JSON payload.');
+});
+
+test('updateTodo updates an existing todo', () => {
+  const todo = createTodo('Write tests');
+
+  const updatedTodo = updateTodo(todo.id, {
+    title: 'Write tests updated',
+    details: 'Updated details',
+  });
+
+  assert.equal(updatedTodo.title, 'Write tests updated');
+  assert.equal(updatedTodo.details, 'Updated details');
+});
+
+test('deleteTodo removes an existing todo', () => {
+  const todo = createTodo('Remove me');
+
+  const deleted = deleteTodo(todo.id);
+
+  assert.equal(deleted, true);
 });
