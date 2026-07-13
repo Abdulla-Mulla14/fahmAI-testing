@@ -39,7 +39,7 @@ export default function Home() {
 
     setEditingId(id);
     setDraftTitle(todo.title);
-    setDraftDetails(todo.details ?? '');
+setError('Cannot edit a task that no longer exists.');
     setError('');
   };
 
